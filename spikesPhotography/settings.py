@@ -3,17 +3,19 @@ Django settings for spikesPhotography project.
 """
 
 from pathlib import Path
+import django_heroku
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-rl9%#3xxt$h7^xwmz-y)@_1fhhesmg+oc452me3$m73mc%rquf'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["mjphotography.herokuapp.com", "localhost:8000"]
+ALLOWED_HOSTS = ["mjphotography.herokuapp.com"]
 
 
 # Application definition
@@ -120,3 +122,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     BASE_DIR / "static"
 ]
+
+django_heroku.settings(locals())
