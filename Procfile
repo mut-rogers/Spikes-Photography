@@ -1,0 +1,1 @@
+web: gunicorn spikesPhotography.wsgi --log-file -
